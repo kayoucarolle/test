@@ -9,11 +9,18 @@ pipeline {
 
    
     stages {
+	     stage('login') {
+            steps {
+                sh '''
+echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u edennolan2021 --password-stdin
+                '''
+            }
+        }
         stage('Terraform Init') {
             agent {
                docker {
                        image 'edennolan2021/packages:1.0'
-                       args '-v /var/run/docker.sock:/var/run/docker.sock'
+                      
                    }
                 }
             steps {

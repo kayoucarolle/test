@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+                 image 'edennolan2021/packages:1.0'
+               }
+         }
     stages {
         stage('Terraform Init') {
             steps {

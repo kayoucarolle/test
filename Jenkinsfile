@@ -18,8 +18,10 @@ pipeline {
         }
         stage('Terraform Init') {
             agent {
-               docker { 'image edennolan2021/packages:1.0' }
-                }
+               docker { 
+		   image edennolan2021/packages:1.0' 
+	        }
+              }
             steps {
                 script {
                     sh 'terraform init'

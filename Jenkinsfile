@@ -1,12 +1,13 @@
 pipeline {
-    agent {
-    docker {
-        image 'edennolan2021/packages:1.0'
-        args '-v /var/run/docker.sock:/var/run/docker.sock'
-    }
-}
+    agent any
+   
     stages {
         stage('Terraform Init') {
+            agent {
+               docker {
+                       image 'edennolan2021/packages:1.0'
+                   }
+                }
             steps {
                 script {
                     sh 'terraform init'

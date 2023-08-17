@@ -18,17 +18,12 @@ pipeline {
                 }
             }
         }
-    }
-    
-    post {
-        always {
-            stage('Terraform Cleanup') {
-                steps {
-                    script {
-                        sh 'terraform destroy -auto-approve'
+      stage('Terraform Cleanup') {
+            steps {
+                script {
+                    sh 'terraform destroy -auto-approve'
                     }
                 }
             }
-        }
-    }
+        
 }

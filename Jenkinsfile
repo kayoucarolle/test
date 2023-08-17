@@ -1,5 +1,12 @@
 pipeline {
-    agent none
+    agent {
+     label ("docker-agent")
+            }
+
+  environment {
+		DOCKERHUB_CREDENTIALS=credentials('dockerhub')
+	}
+
    
     stages {
         stage('Terraform Init') {
